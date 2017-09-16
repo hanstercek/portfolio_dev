@@ -1,0 +1,199 @@
+html, body {
+	height: 100%;
+	width: 100%;
+	margin: 0;
+}
+html {
+	font-size: 62.5%; }
+body {
+	font-size: 1.5em; 
+	line-height: 1.6;
+	font-weight: 400;
+	font-family: 'Open Sans', sans-serif;
+	color: #222; 
+	height: 2000px;
+	background-color: green;
+}
+a {
+	text-decoration: none;
+	color: black;
+}
+.nav-wrapper {
+	width: 100vw;
+	height: 85px;
+	background-color: white;
+	position: fixed;
+	top: 0px;
+}
+#logo {
+	display: inline-block;
+	padding: 7px 25px;
+	width: 210px;
+	height: 2.5em;
+	position: absolute;
+	z-index: 2;
+}
+#logo a {
+	display: block;
+	width: 100%;
+	height: 100%;
+	font-size: 2em;
+	text-align: left;
+}
+.navbar, .sub-nav {
+	list-style:none;
+	position: fixed;
+	margin: 0;
+	padding: 10px 0px;
+	height: 50px;
+	top: 5px;
+
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: flex-start;
+	align-items: baseline;
+	background-color: white;
+}
+.navbar {
+	padding-left: 275px;
+}
+.sub-nav {
+	display: none;	/* changes on hover */
+	height: 30px;
+	padding: 10px 0px 0px 0px;
+	top: 40px;
+	position: absolute;
+	right: 10px;
+}
+.active {
+	text-transform: uppercase;
+	text-decoration: underline;
+}
+.sub-nav li {
+	display: inline-block;
+}
+a, .dropdown #toggle-past {
+	font-family: 'Nunito', sans-serif;
+	font-size: 1.25em;
+	display: block;
+	padding: 0;
+	margin: 0;
+	min-width: 10vw;
+	text-align: right;
+	padding-right: 10px;
+  	cursor: pointer;
+}
+.navbar li:first-child a {
+	min-width: 7vw;
+}
+.sub-nav li a {
+	font-size: 1em;
+	min-width: 5vw;
+	padding-right: 0;
+	padding-left: 20px;
+}
+#logo a:before {
+	content: 'HANS TERCEK';
+}
+.navbar li:last-child label {
+	padding-right: 0;
+}
+.navbar .nav-divider {
+	font-size: 1.5em;
+}
+.toggle, .drop {
+	display: none;
+}
+
+/* Media Queries */
+/* temp query; rotate to min-width only */
+@media all and (min-width: 525px) {
+	.dropdown:hover .sub-nav {
+		display: block;
+	}
+}
+@media all and (max-width: 750px) {
+	.navbar {
+		justify-content: flex-end;
+		width: 100vw;
+		padding-left: 0;
+	}
+	.navbar li:last-child {
+		padding-right: 25px;
+	}
+}
+@media all and (max-width: 525px) {
+	.nav-wrapper {
+		height: 50px;
+	}
+	.navbar, .sub-nav {
+		display: none;
+		flex-flow: column wrap;
+		height: auto;
+		top: 45px;
+		width: 100vw;
+	}
+	.navbar .nav-divider {
+		display: none;
+	}
+	.sub-nav {
+		margin-top: 100px;
+		padding: 0 10px 10px 10px;
+		top: 0;
+		left: 0;
+	}
+	.navbar a, .sub-nav li a, .dropdown #toggle-past {
+		text-align: left;
+		padding-left: 25px;
+		width: 100vw;
+	}
+	#logo {
+		width: 45px;
+	}
+	#logo a::before {
+		content: 'HT';
+	}
+	#toggle-hamburger {
+		display: block;
+		position: absolute;
+		z-index: 2;
+		left: 75px;
+		top: 22px;
+		width: 22px;
+		height: 18px;
+  		cursor: pointer;
+	}
+	#toggle-hamburger span {
+		margin: 1px 1px 3px 1px;
+		display: block;
+		width: 20px;
+		height: 3px;
+		position: relative;
+
+		background-color: black;
+		border-radius: 3px;
+		z-index: 2;
+
+		transform-origin: 0% 0%;
+		transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0), opacity 0.55s ease;
+	}
+	#drop-hamburger:checked ~ #toggle-hamburger > span {
+		transform: rotate(45deg) translate(0px, -3px);
+	}
+	#drop-hamburger:checked ~ #toggle-hamburger > span:nth-last-child(2) {
+		opacity: 0;
+		transform: scale(0.2, 0.2);
+	}
+	#drop-hamburger:checked ~ #toggle-hamburger > span:nth-last-child(1) {
+		transform: rotate(-45deg) translate(0px, 0px);
+	}
+	.drop:checked ~ ul {
+		display: block;
+	}
+	.dropdown #toggle-past:after {
+		content: ' +';
+	}
+	#past-work:checked + #toggle-past:after {
+		content: ' -';
+	}
+}
